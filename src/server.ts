@@ -21,7 +21,10 @@ async function init() {
   const server = new ApolloServer({
     schema,
     introspection: true, // Necesario
-    dataSources: () => ({ seasons: new dataSources.SeasonsData() }),
+    dataSources: () => ({
+      seasons: new dataSources.SeasonsData(),
+      races: new dataSources.RacesData(),
+    }),
   });
 
   server.applyMiddleware({ app });
