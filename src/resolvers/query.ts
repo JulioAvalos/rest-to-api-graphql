@@ -7,6 +7,11 @@ const resolvers: IResolvers = {
         .getSeasons()
         .then((data: any) => data.MRData.SeasonTable.Seasons);
     },
+    async racesByYear(_: void, { year }, { dataSources }) {
+        return await dataSources.races
+          .getYear(year)
+          .then((data: any) => data.MRData.RaceTable.Races);
+      },
   }, 
 };
 

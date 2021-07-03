@@ -1,5 +1,6 @@
 type Query {
     seasonsList: [Season!]!
+    racesByYear(year: String!): [Race!]!
 }
 
 type Mutation {
@@ -16,10 +17,10 @@ type Race {
   season: String!
   round: String!
   url: String!
-  raceName: String!
-  Circuit: Circuit!
+  name: String!
+  circuit: Circuit!
   date: String!
-  time: String!
+  time: String
 }
 
 type Circuit {
