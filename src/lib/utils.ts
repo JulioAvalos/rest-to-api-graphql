@@ -9,3 +9,10 @@ export function checkYear(year: string) {
   }
   return year;
 }
+
+export function roundCheck (round: number) {
+  if(round >= 100) {
+    return 1;
+  }
+  return round;
+}

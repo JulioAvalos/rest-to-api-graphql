@@ -1,4 +1,4 @@
-import { checkYear } from '../lib/utils';
+import { checkYear, roundCheck } from '../lib/utils';
 import { F1 } from './data-source';
 
 export class RacesData extends F1 {
@@ -12,11 +12,12 @@ export class RacesData extends F1 {
       cacheOptions: { ttl: 60 },
     });
   }
-}
 
-export function roundCheck (round: number) {
-  if(round >= 100) {
-    return 1;
+  async getYearRound(year: string, round: number) {
+    year = checkYear(year);
+    round = roundCheck(round);
+    return await this.get(`${year}/${round}.json`, {
+      cacheOptions: { ttl: 60 },
+    });
   }
-  return round;
 }
