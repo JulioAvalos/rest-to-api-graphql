@@ -1,4 +1,4 @@
-import { checkYear } from '../lib/utils';
+import { checkYear, roundCheck } from '../lib/utils';
 import { F1 } from './data-source';
 
 export class DriversData extends F1 {
@@ -27,4 +27,13 @@ export class DriversData extends F1 {
       cacheOptions: { ttl: 60 },
     });
   }
+
+  async getDriversByYearAndRound(year: string, round: number) {
+    year = checkYear(year);
+    round = roundCheck(round);
+    return await this.get(String(year).concat(`/${round}`).concat('/drivers.json'), {
+      cacheOptions: { ttl: 60 },
+    });
+  }
+
 }
