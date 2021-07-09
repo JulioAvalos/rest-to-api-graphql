@@ -87,12 +87,12 @@ type DriverStanding {
   positionText: String!
   points: String!
   wins: String!
-  driver: Driver
+  driver: Driver!
   constructors: [Constructor!]!
 }
 
 type Constructor {
-  constructorId: String!
+  id: String!
   url: String!
   urlMobile: String!
   name: String!
