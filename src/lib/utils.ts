@@ -10,9 +10,15 @@ export function checkYear(year: string) {
   return year;
 }
 
-export function roundCheck (round: number) {
-  if(round >= 100) {
+export function roundCheck(round: number) {
+  if (round >= 100) {
     return 1;
   }
   return round;
+}
+
+export function paginationOptions(pageElements: number, page: number) {
+  const offset = (page - 1) * pageElements;
+  const limit = pageElements;
+  return `limit=${limit}&offset=${offset}`;
 }

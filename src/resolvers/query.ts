@@ -42,6 +42,10 @@ const resolvers: IResolvers = {
         .getSeasonPilotsRanking(year)
         .then((data: any) => data.MRData.StandingsTable.StandingsLists[0].DriverStandings);
     },
+    async historyCircuits(_: void, { pageElements, page }, { dataSources }) {
+      return await dataSources.circuit.getCircuits(pageElements, page)
+        .then((data: any) => data.MRData.CircuitTable.Circuits);
+    },
   },
 };
 

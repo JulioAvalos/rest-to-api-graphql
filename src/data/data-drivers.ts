@@ -1,4 +1,4 @@
-import { checkYear, roundCheck } from '../lib/utils';
+import { checkYear, paginationOptions, roundCheck } from '../lib/utils';
 import { F1 } from './data-source';
 
 export class DriversData extends F1 {
@@ -12,10 +12,7 @@ export class DriversData extends F1 {
         cacheOptions: { ttl: 60 },
       });
     } else {
-      const offset = (page - 1) * pageElements;
-      const limit = pageElements;
-      const filter = `limit=${limit}&offset=${offset}`;
-      return await this.get(`drivers.json?${filter}`, {
+      return await this.get(`drivers.json?${paginationOptions(pageElements, page)}`, {
         cacheOptions: { ttl: 60 },
       });
     }
