@@ -27,6 +27,8 @@ type Query {
   driversYearAndRound(year: String!, round: Int!): [Driver!]!
   "Obtenemos la informacion del piloto mediaten el valor ID"
   driverSelect(id: String!): Driver
+  "Clasificacion final de los pilotos de una temporada"
+  seasonPilotRanking(year: String!): [DriverStanding!]!
 }
 
 type Mutation {
@@ -78,4 +80,21 @@ type Driver {
   nationality: String!
   code: String
   permanentNumber: String
+}
+
+type DriverStanding {
+  position: String!
+  positionText: String!
+  points: String!
+  wins: String!
+  driver: Driver
+  constructors: [Constructor!]!
+}
+
+type Constructor {
+  constructorId: String!
+  url: String!
+  urlMobile: String!
+  name: String!
+  nationality: String!
 }
